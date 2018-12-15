@@ -1,0 +1,16 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <Version>0.0.1-local-build</Version>
+    <Company>TWIA</Company>
+    <Authors>Daniël te Winkel</Authors>
+    <Copyright>© 2018 TWIA. All rights reserved.</Copyright>
+    <DebugType>full</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>
