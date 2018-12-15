@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Azure.WebJobs.Host.Protocols;
-using Twia.AzureFunction.SimpleInjector.Services;
+using Twia.AzureFunction.SimpleInjector.Config;
 
-namespace Twia.AzureFunction.SimpleInjector.Bindings
+namespace Twia.AzureFunction.SimpleInjector.Binding
 {
     internal class InjectBinding : IBinding
     {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs.Host.Bindings;
-using Twia.AzureFunction.SimpleInjector.Services;
+using Twia.AzureFunction.SimpleInjector.Config;
 
-namespace Twia.AzureFunction.SimpleInjector.Bindings
+namespace Twia.AzureFunction.SimpleInjector.Binding
 {
     internal class InjectBindingProvider : IBindingProvider
     {
@@ -11,10 +11,7 @@ namespace Twia.AzureFunction.SimpleInjector.Bindings
         public InjectBindingProvider(ServiceProviderHolder serviceProviderHolder) =>
             _serviceProviderHolder = serviceProviderHolder;
 
-        public Task<IBinding> TryCreateAsync(BindingProviderContext context)
-        {
-            IBinding binding = new InjectBinding(_serviceProviderHolder, context.Parameter.ParameterType);
-            return Task.FromResult(binding);
-        }
+        public async Task<IBinding> TryCreateAsync(BindingProviderContext context) =>
+            await Task.FromResult(new InjectBinding(_serviceProviderHolder, context.Parameter.ParameterType));
     }
 }

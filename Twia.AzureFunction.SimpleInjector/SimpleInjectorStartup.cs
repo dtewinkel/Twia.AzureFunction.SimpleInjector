@@ -4,9 +4,8 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleInjector;
-using Twia.AzureFunction.SimpleInjector.Bindings;
+using Twia.AzureFunction.SimpleInjector.Binding;
 using Twia.AzureFunction.SimpleInjector.Config;
-using Twia.AzureFunction.SimpleInjector.Services;
 
 namespace Twia.AzureFunction.SimpleInjector
 {

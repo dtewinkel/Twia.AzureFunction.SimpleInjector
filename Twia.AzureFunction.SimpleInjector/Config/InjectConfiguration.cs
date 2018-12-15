@@ -1,5 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs.Host.Config;
-using Twia.AzureFunction.SimpleInjector.Bindings;
+using Twia.AzureFunction.SimpleInjector.Binding;
 
 namespace Twia.AzureFunction.SimpleInjector.Config
 {
