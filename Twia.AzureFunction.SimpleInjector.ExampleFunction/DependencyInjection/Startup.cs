@@ -22,7 +22,7 @@ namespace Twia.AzureFunction.SimpleInjector.ExampleFunction.DependencyInjection
         public void Build(Container container)
         {
             container.RegisterInstance(BuildConfiguration());
-            container.Register<IExampleService, ExampleService>();
+            container.RegisterSingleton<IExampleService, ExampleService>();
         }
 
         /// <summary>
