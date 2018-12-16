@@ -8,6 +8,7 @@
     <Product>SimpleInjector for Azure Functions</Product>
     <Description>Azure Function extension to allow injection of service dependencies into an Azure function V2, using Simple Injector.</Description>
     <RepositoryUrl>https://dev.azure.com/twia/_git/Twia.AzureFunction.SimpleInjector</RepositoryUrl>
+    <PackageIconUrl>https://www.twia.nl/resources/twia.ico</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>azure function simple injector inject di ioc</PackageTags>
   </PropertyGroup>
