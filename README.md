@@ -63,3 +63,6 @@ namespace Twia.AzureFunction.SimpleInjector.ExampleFunction.DependencyInjection
 }
 ```
 
+## Known issues
+
+There is a know issue in Azure Function V2 resulting in not always generating a correct `extensions.json`. See [Issue 972](https://github.com/Azure/Azure-Functions/issues/972) in the [Azure Functions GitHub repository](https://github.com/Azure/Azure-Functions) for a detailed description and suggested workarounds.
