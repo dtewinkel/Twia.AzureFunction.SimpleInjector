@@ -9,7 +9,14 @@ using Twia.AzureFunction.SimpleInjector.Config;
 
 namespace Twia.AzureFunction.SimpleInjector
 {
-    public class SimpleInjectorStartup<TStartup> : IWebJobsStartup where TStartup : IStartup
+    public class SimpleInjectorStartup<TStartup> : SimpleInjectorStartup<TStartup, DefaultStartConfiguration>
+        where TStartup : IStartup
+    {
+    }
+
+    public class SimpleInjectorStartup<TStartup, TConfiguration> : IWebJobsStartup
+        where TStartup : IStartup
+        where TConfiguration : IStartConfiguration, new()
     {
         public void Configure(IWebJobsBuilder builder)
         {
@@ -21,11 +28,21 @@ namespace Twia.AzureFunction.SimpleInjector
             builder.AddExtension<InjectConfiguration>();
         }
 
-        private static Container GetSimpleInjectContainer(IServiceProvider provider)
+        private static Container GetSimpleInjectContainer(IServiceProvider serviceProvider)
         {
+            var configuration = new TConfiguration();
+
             var container = new Container();
-            container.AddLogging(provider);
-            container.AddUserServices(provider);
+            if (configuration.AddILogger)
+            {
+                container.AddILogger(serviceProvider);
+            }
+            if (configuration.AddILoggerOfT)
+            {
+                container.AddILoggerOfT(serviceProvider);
+            }
+            var serviceProviderBuilder = serviceProvider.GetRequiredService<IStartup>();
+            serviceProviderBuilder.Build(container, serviceProvider);
             container.Verify();
             return container;
         }

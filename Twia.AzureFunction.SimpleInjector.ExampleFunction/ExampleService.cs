@@ -11,7 +11,7 @@ namespace Twia.AzureFunction.SimpleInjector.ExampleFunction
         private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
 
-        public ExampleService(ILogger logger, IConfiguration configuration)
+        public ExampleService(ILogger<ExampleService> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
@@ -21,6 +21,7 @@ namespace Twia.AzureFunction.SimpleInjector.ExampleFunction
         {
             var greeting = _configuration["ExampleGreeting"] ?? "Hello World!";
             _logger.LogInformation("In service.");
+            _logger.LogWarning("Working...");
             return await Task.FromResult(new OkObjectResult(greeting));
         }
     }

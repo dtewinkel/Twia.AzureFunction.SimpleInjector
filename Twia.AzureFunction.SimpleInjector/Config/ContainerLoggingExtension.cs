@@ -6,14 +6,20 @@ using SimpleInjector;
 
 namespace Twia.AzureFunction.SimpleInjector.Config
 {
-
     public static class ContainerLoggingExtension
     {
-        public static void AddLogging(this Container container, IServiceProvider serviceProvider)
+        public static void AddILogger(this Container container, IServiceProvider serviceProvider, string categoryName = default)
         {
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-            var logger = loggerFactory.CreateLogger(LogCategories.CreateFunctionUserCategory("Common"));
+            var logger = loggerFactory.CreateLogger(categoryName ?? LogCategories.CreateFunctionUserCategory("Common"));
             container.RegisterInstance(logger);
+        }
+
+        public static void AddILoggerOfT(this Container container, IServiceProvider serviceProvider)
+        {
+            var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+            container.RegisterInstance(loggerFactory);
+            container.Register(typeof(ILogger<>), typeof(LoggerAdapter<>), Lifestyle.Singleton);
         }
     }
 }

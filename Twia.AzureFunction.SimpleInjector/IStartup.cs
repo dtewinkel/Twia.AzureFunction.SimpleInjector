@@ -12,6 +12,6 @@ namespace Twia.AzureFunction.SimpleInjector
         /// Creates an instance of an <see cref="IServiceProvider"/>.
         /// </summary>
         /// <returns></returns>
-        void Build(Container container);
+        void Build(Container container, IServiceProvider serviceProvider);
     }
 }

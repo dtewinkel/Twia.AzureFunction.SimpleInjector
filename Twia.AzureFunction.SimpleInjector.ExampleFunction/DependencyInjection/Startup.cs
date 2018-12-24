@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.WebJobs.Hosting;
 using SimpleInjector;
@@ -19,7 +20,8 @@ namespace Twia.AzureFunction.SimpleInjector.ExampleFunction.DependencyInjection
         /// Build the Simple Injector Container.
         /// </summary>
         /// <param name="container">The container in which to register all dependencies.</param>
-        public void Build(Container container)
+        /// <param name="serviceProvider">The service provider as create by the Azure Function framework.</param>
+        public void Build(Container container, IServiceProvider serviceProvider)
         {
             container.RegisterInstance(BuildConfiguration());
             container.RegisterSingleton<IExampleService, ExampleService>();
