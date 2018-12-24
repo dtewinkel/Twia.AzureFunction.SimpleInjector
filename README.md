@@ -2,11 +2,7 @@
 
 This project provides a [NuGet](https://www.nuget.org/) package to support the use of [Simple Injector](https://simpleinjector.org) to inject dependencies as bindings into an [Azure Function](https://azure.microsoft.com/services/functions/).
 
-Latest build of master branch: [![Build status](https://twia.visualstudio.com/Twia.AzureFunction.SimpleInjector/_apis/build/status/Twia.AzureFunction.SimpleInjector-CI)](https://twia.visualstudio.com/Twia.AzureFunction.SimpleInjector/_build/latest?definitionId=12)
-
-![Pre-release build](https://twia.vsrm.visualstudio.com/_apis/public/Release/badge/ce3539e0-dd5a-4fb2-bcb0-823f6249db07/1/1)
-
-![Release build](https://twia.vsrm.visualstudio.com/_apis/public/Release/badge/ce3539e0-dd5a-4fb2-bcb0-823f6249db07/1/2)
+Latest baster branch build: [![Build status](https://twia.visualstudio.com/Twia.AzureFunction.SimpleInjector/_apis/build/status/Twia.AzureFunction.SimpleInjector-CI)](https://twia.visualstudio.com/Twia.AzureFunction.SimpleInjector/_build/latest?definitionId=12) and Release: [![Release build](https://twia.vsrm.visualstudio.com/_apis/public/Release/badge/ce3539e0-dd5a-4fb2-bcb0-823f6249db07/1/2)](https://www.nuget.org/packages/Twia.AzureFunction.SimpleInjector/)
 
 ## Introduction
 

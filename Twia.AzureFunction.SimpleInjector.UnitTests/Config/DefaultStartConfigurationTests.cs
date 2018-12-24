@@ -22,6 +22,5 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests.Config
 
             sut.AddILoggerOfT.Should().BeFalse("The default value is 'false'.");
         }
-
     }
 }

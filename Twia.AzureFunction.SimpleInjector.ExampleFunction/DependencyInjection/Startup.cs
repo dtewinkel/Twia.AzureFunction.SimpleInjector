@@ -7,7 +7,7 @@ using Twia.AzureFunction.SimpleInjector;
 using Twia.AzureFunction.SimpleInjector.ExampleFunction.DependencyInjection;
 
 // Register the Startup class as the entry point for the extension.
-[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup>))]
+[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, StartupConfiguration>))]
 
 namespace Twia.AzureFunction.SimpleInjector.ExampleFunction.DependencyInjection
 {
