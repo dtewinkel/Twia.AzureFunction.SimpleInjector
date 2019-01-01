@@ -28,6 +28,7 @@ bld/
 #wwwroot/
 
 # MSTest test Results
+[Uu]nit[Tt]est[Rr]esult*/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 

@@ -1,4 +1,4 @@
-﻿namespace Twia.AzureFunction.SimpleInjector.Config
+﻿namespace Twia.AzureFunction.SimpleInjector
 {
     public class DefaultStartConfiguration : IStartConfiguration
     {

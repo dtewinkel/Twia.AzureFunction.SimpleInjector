@@ -1,14 +1,13 @@
 ﻿using System;
 using EnsureThat;
-using SimpleInjector;
 
 namespace Twia.AzureFunction.SimpleInjector.Config
 {
-    public class ServiceProviderHolder
+    internal class ServiceProviderHolder : IServiceProviderHolder
     {
-        private readonly Container _serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ServiceProviderHolder(Container serviceProvider)
+        public ServiceProviderHolder(IServiceProvider serviceProvider)
         {
             EnsureArg.IsNotNull(serviceProvider, nameof(serviceProvider));
 
@@ -19,7 +18,7 @@ namespace Twia.AzureFunction.SimpleInjector.Config
         {
             EnsureArg.IsNotNull(serviceType, nameof(serviceType));
 
-            return _serviceProvider.GetInstance(serviceType);
+            return _serviceProvider.GetService(serviceType);
         }
     }
 }

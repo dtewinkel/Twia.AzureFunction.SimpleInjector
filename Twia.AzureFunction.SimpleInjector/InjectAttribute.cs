@@ -6,7 +6,7 @@ namespace Twia.AzureFunction.SimpleInjector
     /// <summary>
     /// Attribute used to inject a dependency as a binding into a function.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Parameter)]
     [Binding]
     public sealed class InjectAttribute : Attribute
     {

@@ -23,12 +23,12 @@ namespace Twia.AzureFunction.SimpleInjector
             EnsureArg.IsNotNull(builder, nameof(builder));
 
             builder.Services.AddSingleton(typeof(IStartup), typeof(TStartup));
-            builder.Services.AddSingleton(provider => new ServiceProviderHolder(GetSimpleInjectContainer(provider)));
-            builder.Services.AddSingleton<InjectBindingProvider>();
+            builder.Services.AddSingleton<IServiceProviderHolder>(provider => new ServiceProviderHolder(GetSimpleInjectContainer(provider)));
+            builder.Services.AddSingleton<IInjectBindingProvider, InjectBindingProvider>();
             builder.AddExtension<InjectConfiguration>();
         }
 
-        private static Container GetSimpleInjectContainer(IServiceProvider serviceProvider)
+        private static IServiceProvider GetSimpleInjectContainer(IServiceProvider serviceProvider)
         {
             var configuration = new TConfiguration();
 

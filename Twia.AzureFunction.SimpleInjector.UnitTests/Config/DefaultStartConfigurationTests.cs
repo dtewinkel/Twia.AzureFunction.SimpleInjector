@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Twia.AzureFunction.SimpleInjector.Config;
+using NUnit.Framework;
 
 namespace Twia.AzureFunction.SimpleInjector.UnitTests.Config
 {
-    [TestClass]
+    [TestFixture]
     public class DefaultStartConfigurationTests
     {
-        [TestMethod]
+        [Test]
         public void AddILogger_ReturnsExpectedDefault()
         {
             var sut = new DefaultStartConfiguration();
@@ -15,7 +14,7 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests.Config
             sut.AddILogger.Should().BeTrue("The default value is 'true'.");
         }
 
-        [TestMethod]
+        [Test]
         public void AddILoggerOfT_ReturnsExpectedDefault()
         {
             var sut = new DefaultStartConfiguration();

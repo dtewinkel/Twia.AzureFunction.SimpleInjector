@@ -4,11 +4,11 @@ using Twia.AzureFunction.SimpleInjector.Config;
 
 namespace Twia.AzureFunction.SimpleInjector.Binding
 {
-    internal class InjectBindingProvider : IBindingProvider
+    internal class InjectBindingProvider : IInjectBindingProvider
     {
-        private readonly ServiceProviderHolder _serviceProviderHolder;
+        private readonly IServiceProviderHolder _serviceProviderHolder;
 
-        public InjectBindingProvider(ServiceProviderHolder serviceProviderHolder) =>
+        public InjectBindingProvider(IServiceProviderHolder serviceProviderHolder) =>
             _serviceProviderHolder = serviceProviderHolder;
 
         public async Task<IBinding> TryCreateAsync(BindingProviderContext context) =>

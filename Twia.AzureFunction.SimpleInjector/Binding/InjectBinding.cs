@@ -9,9 +9,9 @@ namespace Twia.AzureFunction.SimpleInjector.Binding
     internal class InjectBinding : IBinding
     {
         private readonly Type _type;
-        private readonly ServiceProviderHolder _serviceProviderHolder;
+        private readonly IServiceProviderHolder _serviceProviderHolder;
 
-        internal InjectBinding(ServiceProviderHolder serviceProviderHolder, Type type)
+        internal InjectBinding(IServiceProviderHolder serviceProviderHolder, Type type)
         {
             _type = type;
             _serviceProviderHolder = serviceProviderHolder;
