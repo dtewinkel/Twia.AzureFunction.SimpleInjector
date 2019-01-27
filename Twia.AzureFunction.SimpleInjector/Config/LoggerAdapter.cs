@@ -1,4 +1,5 @@
 ﻿using System;
+using EnsureThat;
 using Microsoft.Azure.WebJobs.Logging;
 using Microsoft.Extensions.Logging;
 
@@ -9,7 +10,11 @@ namespace Twia.AzureFunction.SimpleInjector.Config
         private readonly ILogger _logger;
 
         public LoggerAdapter(ILoggerFactory factory)
-            => _logger = factory.CreateLogger(LogCategories.CreateFunctionUserCategory(nameof(T)));
+        {
+            EnsureArg.IsNotNull(factory, nameof(factory));
+
+            _logger = factory.CreateLogger(LogCategories.CreateFunctionUserCategory(nameof(T)));
+        }
 
         public IDisposable BeginScope<TState>(TState state) 
             => _logger.BeginScope(state);

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace Twia.AzureFunction.SimpleInjector.UnitTests.Config
+namespace Twia.AzureFunction.SimpleInjector.UnitTests
 {
     [TestFixture]
     public class DefaultStartConfigurationTests
