@@ -2,9 +2,7 @@
 <RunSettings>  
   <!-- Configurations that affect the Test Framework -->  
   <RunConfiguration>  
-    <MaxCpuCount>1</MaxCpuCount>  
-    <ResultsDirectory>.\TestResults\netstandard</ResultsDirectory>  
-    <TargetPlatform>x64</TargetPlatform>  
+    <ResultsDirectory>.\TestResults</ResultsDirectory>  
   </RunConfiguration>  
   
   <!-- Configurations for data collectors -->  

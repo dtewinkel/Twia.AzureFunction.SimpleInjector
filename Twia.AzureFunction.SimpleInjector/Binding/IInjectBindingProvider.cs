@@ -2,7 +2,7 @@
 
 namespace Twia.AzureFunction.SimpleInjector.Binding
 {
-    internal interface IInjectBindingProvider : IBindingProvider
+    public interface IInjectBindingProvider : IBindingProvider
     {
     }
 }
