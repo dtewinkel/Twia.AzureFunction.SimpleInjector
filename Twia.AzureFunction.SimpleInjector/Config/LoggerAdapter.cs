@@ -1,6 +1,5 @@
 ﻿using System;
 using EnsureThat;
-using Microsoft.Azure.WebJobs.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace Twia.AzureFunction.SimpleInjector.Config
@@ -13,7 +12,7 @@ namespace Twia.AzureFunction.SimpleInjector.Config
         {
             EnsureArg.IsNotNull(factory, nameof(factory));
 
-            _logger = factory.CreateLogger(LogCategories.CreateFunctionUserCategory(nameof(T)));
+            _logger = factory.CreateLogger<T>();
         }
 
         public IDisposable BeginScope<TState>(TState state) 

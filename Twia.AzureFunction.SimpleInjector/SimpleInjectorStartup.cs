@@ -31,8 +31,8 @@ namespace Twia.AzureFunction.SimpleInjector
         private static IServiceProvider GetSimpleInjectContainer(IServiceProvider serviceProvider)
         {
             var configuration = new TConfiguration();
-
             var container = new Container();
+
             if (configuration.AddILogger)
             {
                 container.AddILogger(serviceProvider);

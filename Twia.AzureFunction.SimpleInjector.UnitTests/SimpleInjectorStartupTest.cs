@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using Twia.AzureFunction.SimpleInjector.Config;
-using Twia.AzureFunction.SimpleInjector.UnitTests.Config;
 
 namespace Twia.AzureFunction.SimpleInjector.UnitTests
 {
@@ -110,6 +109,5 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests
             Assert.That(loggerOfT, Is.InstanceOf<ILogger>());
             Assert.That(loggerOfT, Is.TypeOf<LoggerAdapter<SimpleInjectorStartupTest>>());
         }
-
     }
 }
