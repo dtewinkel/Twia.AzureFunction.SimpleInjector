@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Twia.AzureFunction.SimpleInjector;
-using Twia.AzureFunction.SimpleInjector.ExampleFunction;
 
 public static class ExampleFunction
 {

@@ -1,11 +1,9 @@
 ﻿using System;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using SimpleInjector;
 using Twia.AzureFunction.SimpleInjector.Config;
-using Twia.AzureFunction.SimpleInjector.UnitTests.Config;
 
 namespace Twia.AzureFunction.SimpleInjector.UnitTests
 {
@@ -88,7 +86,7 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests
 
             _container.Verify();
             var instance = _container.GetInstance<ILogger<string>>();
-            Assert.That(instance, Is.TypeOf<LoggerAdapter<string>>());
+            Assert.That(instance, Is.TypeOf<Logger<string>>());
         }
 
         [Test]

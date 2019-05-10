@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Twia.AzureFunction.SimpleInjector.ExampleFunction;
 
 public class ExampleService : IExampleService
 {

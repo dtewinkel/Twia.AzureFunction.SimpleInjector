@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Twia.AzureFunction.SimpleInjector.ExampleFunction
+public interface IExampleService
 {
-    public interface IExampleService
-    {
-        Task<IActionResult> ShowInjection(HttpRequest request);
-    }
+    Task<IActionResult> ShowInjection(HttpRequest request);
 }

@@ -27,7 +27,7 @@ namespace Twia.AzureFunction.SimpleInjector
 
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
             container.RegisterInstance(loggerFactory);
-            container.Register(typeof(ILogger<>), typeof(LoggerAdapter<>), Lifestyle.Singleton);
+            container.Register(typeof(ILogger<>), typeof(Logger<>), Lifestyle.Singleton);
         }
     }
 }

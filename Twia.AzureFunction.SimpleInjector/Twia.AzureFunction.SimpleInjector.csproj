@@ -11,8 +11,11 @@
     <PackageIconUrl>https://twiaresources.blob.core.windows.net/nuget/twia-64.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>azure function simple injector inject di ioc</PackageTags>
-    <PackageReleaseNotes>Version 2.0.0:
-- Adds the ability to configure which logging (ILogger od ILogger&lt;T&gt;) will be made available to the injected types.
+    <PackageReleaseNotes>Version 2.1.0:
+- Use the Microsoft provided implementation of Logger&lt;T&gt; for ILogger&lt;T&gt;.
+
+Version 2.0.0:
+- Adds the ability to configure which logging (ILogger or ILogger&lt;T&gt;) will be made available to the injected types.
 
 Version 1.0.1: 
 - Added documentation.

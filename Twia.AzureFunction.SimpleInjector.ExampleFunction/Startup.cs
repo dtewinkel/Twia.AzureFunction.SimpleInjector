@@ -4,13 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.WebJobs.Hosting;
 using SimpleInjector;
 using Twia.AzureFunction.SimpleInjector;
-using Twia.AzureFunction.SimpleInjector.ExampleFunction;
 
 // Register the Startup class as the entry point for the extension.
 [assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, StartupConfiguration>))]
 
 /// <summary>
-/// This class takes care of registering the SimpleInjector bindings required bij this Function App.
+/// This class takes care of registering the SimpleInjector bindings required by this Function App.
 /// </summary>
 internal class Startup : IStartup
 {

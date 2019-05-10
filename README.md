@@ -6,7 +6,7 @@ Latest baster branch build: [![Build status](https://twia.visualstudio.com/Twia.
 
 ## Introduction
 
-This package is based on the nice start given bij Boris Wilhelms in his blog [Dependency injection for Azure Function v2](https://blog.wille-zone.de/post/dependency-injection-for-azure-functions/). This has been used to specialize it for Simple Injector and also simplify its usage.
+This package is based on the nice start given by Boris Wilhelms in his blog [Dependency injection for Azure Function v2](https://blog.wille-zone.de/post/dependency-injection-for-azure-functions/). This has been used to specialize it for Simple Injector and also simplify its usage.
 
 ## Get the package
 
@@ -34,7 +34,7 @@ using Twia.AzureFunction.SimpleInjector;
 [assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup>))]
 
 /// <summary>
-/// This class takes care of registering the SimpleInjector bindings required bij this Function App.
+/// This class takes care of registering the SimpleInjector bindings required by this Function App.
 /// </summary>
 internal class Startup : IStartup
 {

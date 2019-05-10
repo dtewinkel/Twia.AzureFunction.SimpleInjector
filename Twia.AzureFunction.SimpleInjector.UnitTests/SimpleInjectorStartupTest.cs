@@ -107,7 +107,7 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests
             Assert.That(logger, Is.SameAs(_internalLogger));
             var loggerOfT = serviceProviderHolder.GetRequiredService(typeof(ILogger<SimpleInjectorStartupTest>));
             Assert.That(loggerOfT, Is.InstanceOf<ILogger>());
-            Assert.That(loggerOfT, Is.TypeOf<LoggerAdapter<SimpleInjectorStartupTest>>());
+            Assert.That(loggerOfT, Is.TypeOf<Logger<SimpleInjectorStartupTest>>());
         }
     }
 }
