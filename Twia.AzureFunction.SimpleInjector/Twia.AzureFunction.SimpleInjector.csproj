@@ -11,7 +11,11 @@
     <PackageIconUrl>https://twiaresources.blob.core.windows.net/nuget/twia-64.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>azure function simple injector inject di ioc</PackageTags>
-    <PackageReleaseNotes>Version 2.1.0:
+    <PackageReleaseNotes>Version 2.0.2:
+- Updated SimpleInjector to 4.6.0.
+- Updated Microsoft.NET.Sdk.Functions to 1.0.28. This seems to fix issues with generation of extensions.json on build.
+
+Version 2.0.1:
 - Use the Microsoft provided implementation of Logger&lt;T&gt; for ILogger&lt;T&gt;.
 
 Version 2.0.0:
@@ -29,7 +33,7 @@ Version 1.0.0:
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Ensure.That" Version="8.1.1" />
-    <PackageReference Include="SimpleInjector" Version="4.5.2" />
+    <PackageReference Include="SimpleInjector" Version="4.6.0" />
   </ItemGroup>
 
 </Project>

@@ -84,4 +84,4 @@ Then change the line `[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Sta
 
 ## Known issues
 
-There is a know issue in Azure Function V2 resulting in not always generating a correct `extensions.json`. See [Issue 972](https://github.com/Azure/Azure-Functions/issues/972) in the [Azure Functions GitHub repository](https://github.com/Azure/Azure-Functions) for a detailed description and suggested workarounds.
+There is a know issue in Azure Function V2 resulting in not always generating a correct `extensions.json`. See [Issue 972](https://github.com/Azure/Azure-Functions/issues/972) in the [Azure Functions GitHub repository](https://github.com/Azure/Azure-Functions) for a detailed description and suggested workarounds. This seems to be fixed in Microsoft.NET.Sdk.Functions to 1.0.28.
