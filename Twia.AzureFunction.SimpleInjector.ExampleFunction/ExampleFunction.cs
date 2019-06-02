@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,4 +17,23 @@ public static class ExampleFunction
     {
         return await exampleService.ShowInjection(req);
     }
+
+    [FunctionName(nameof(FindBlobs))]
+    [return: Queue("FoundBlobs", Connection = "QueueConnectionString")]
+    public static BlobFoundMessage FindBlobs(
+        [BlobTrigger("input/{name}", Connection = "BlobConnectionString")]
+        Stream myBlob,
+        string name)
+    {
+        return new BlobFoundMessage
+        {
+            Name = name
+        };
+    }
+
+}
+
+public class BlobFoundMessage
+{
+    public string Name { get; set; }
 }

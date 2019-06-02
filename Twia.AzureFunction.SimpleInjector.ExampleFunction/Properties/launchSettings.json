@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Twia.AzureFunction.SimpleInjector.ExampleFunction": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ExampleService:ExampleGreetingFromEnvironment": "Hello From Environment"
+      }
+    }
+  }
+}

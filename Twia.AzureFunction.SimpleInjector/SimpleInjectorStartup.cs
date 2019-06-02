@@ -10,29 +10,34 @@ using Twia.AzureFunction.SimpleInjector.Config;
 namespace Twia.AzureFunction.SimpleInjector
 {
     public class SimpleInjectorStartup<TStartup> : SimpleInjectorStartup<TStartup, DefaultStartConfiguration>
-        where TStartup : IStartup
+        where TStartup : IStartup, new()
     {
     }
 
     public class SimpleInjectorStartup<TStartup, TConfiguration> : IWebJobsStartup
-        where TStartup : IStartup
+        where TStartup : IStartup, new()
         where TConfiguration : IStartConfiguration, new()
     {
+        private IStartup _startup;
+
         public void Configure(IWebJobsBuilder builder)
         {
             EnsureArg.IsNotNull(builder, nameof(builder));
 
-            builder.Services.AddSingleton(typeof(IStartup), typeof(TStartup));
-            builder.Services.AddSingleton<IServiceProviderHolder>(provider => new ServiceProviderHolder(GetSimpleInjectContainer(provider)));
+            _startup = new TStartup();
+
+            (_startup as IConfigure)?.Configure(builder);
+
+            builder.Services.AddSingleton<IServiceProviderHolder>(provider => new ServiceProviderHolder(GetSimpleInjectContainer(provider, _startup)));
             builder.Services.AddSingleton<IInjectBindingProvider, InjectBindingProvider>();
             builder.AddExtension<InjectConfiguration>();
         }
 
-        private static IServiceProvider GetSimpleInjectContainer(IServiceProvider serviceProvider)
+        private static IServiceProvider GetSimpleInjectContainer(IServiceProvider serviceProvider, IStartup startup)
         {
-            var configuration = new TConfiguration();
             var container = new Container();
 
+            var configuration = new TConfiguration();
             if (configuration.AddILogger)
             {
                 container.AddILogger(serviceProvider);
@@ -41,8 +46,8 @@ namespace Twia.AzureFunction.SimpleInjector
             {
                 container.AddILoggerOfT(serviceProvider);
             }
-            var serviceProviderBuilder = serviceProvider.GetRequiredService<IStartup>();
-            serviceProviderBuilder.Build(container, serviceProvider);
+
+            startup.Build(container, serviceProvider);
             container.Verify();
             return container;
         }
