@@ -1,21 +1,33 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using EnsureThat;
+using Microsoft.Extensions.Configuration;
 
 namespace Twia.AzureFunction.SimpleInjector
 {
     public static class ConfigurationExtensions
     {
-        public static TInterface BindSettings<TInterface, TConcrete>(this IConfiguration configuration, string sectionName)
-            where TConcrete : TInterface, new()
+        public static TConcrete BindSettings<TConcrete>(this IConfiguration configuration)
+            where TConcrete : class, new()
         {
-            var settings = new TConcrete();
-            configuration.GetSection(sectionName).Bind(settings);
-            return settings;
+            EnsureArg.IsNotNull(configuration, nameof(configuration));
+
+            return Bind<TConcrete>(configuration);
         }
 
         public static TConcrete BindSettings<TConcrete>(this IConfiguration configuration, string sectionName)
-            where TConcrete : new()
+            where TConcrete : class, new()
         {
-            return configuration.BindSettings<TConcrete, TConcrete>(sectionName);
+            EnsureArg.IsNotNull(configuration, nameof(configuration));
+            EnsureArg.IsNotNullOrWhiteSpace(sectionName, nameof(sectionName));
+
+            return Bind<TConcrete>(configuration.GetSection(sectionName));
+        }
+
+        private static TConcrete Bind<TConcrete>(IConfiguration configuration)
+            where TConcrete : class, new()
+        {
+            var settings = new TConcrete();
+            configuration.Bind(settings);
+            return settings;
         }
     }
 }
