@@ -26,8 +26,8 @@ internal class Startup : IStartup, IConfigure
         var configuration = BuildConfiguration();
         container.RegisterInstance(configuration);
 
-        container.CrossWire<IHttpClientFactory>(serviceProvider);
-        container.RegisterSettings<IExampleServiceSettings, ExampleServiceSettings>(configuration, ExampleServiceSettings.SectionName);
+        container.CrossWireSingleton<IHttpClientFactory>(serviceProvider);
+        container.RegisterSettings<IExampleServiceSettings, ExampleServiceSettings>(configuration);
         container.RegisterSingleton<IExampleService, ExampleService>();
     }
 
