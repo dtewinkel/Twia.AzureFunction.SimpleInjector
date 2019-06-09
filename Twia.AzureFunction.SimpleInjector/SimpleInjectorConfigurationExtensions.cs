@@ -6,7 +6,16 @@ namespace Twia.AzureFunction.SimpleInjector
 {
     public static class SimpleInjectorConfigurationExtensions
     {
-        public static TInterface RegisterSettings<TInterface, TConcrete>(this Container container, IConfiguration configuration, string sectionName)
+        /// <summary>
+        /// Register settings 
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <typeparam name="TConcrete"></typeparam>
+        /// <param name="container"></param>
+        /// <param name="configuration"></param>
+        /// <param name="sectionName"></param>
+        /// <returns></returns>
+        public static TInterface RegisterSettingsSingleton<TInterface, TConcrete>(this Container container, IConfiguration configuration, string sectionName)
             where TConcrete : class, TInterface, new()
             where TInterface : class
         {
@@ -19,7 +28,11 @@ namespace Twia.AzureFunction.SimpleInjector
             return settings;
         }
 
-        public static TInterface RegisterSettings<TInterface, TConcrete>(this Container container, IConfiguration configuration)
+        public static TConcrete RegisterSettingsSingleton<TConcrete>(this Container container, IConfiguration configuration, string sectionName)
+            where TConcrete : class, new()
+            => container.RegisterSettingsSingleton<TConcrete, TConcrete>(configuration, sectionName);
+
+        public static TInterface RegisterSettingsSingleton<TInterface, TConcrete>(this Container container, IConfiguration configuration)
             where TConcrete : class, TInterface, new()
             where TInterface : class
         {
@@ -31,8 +44,8 @@ namespace Twia.AzureFunction.SimpleInjector
             return settings;
         }
 
-        public static TConcrete RegisterSettings<TConcrete>(this Container container, IConfiguration configuration)
+        public static TConcrete RegisterSettingsSingleton<TConcrete>(this Container container, IConfiguration configuration)
             where TConcrete : class, new()
-            => container.RegisterSettings<TConcrete, TConcrete>(configuration);
+            => container.RegisterSettingsSingleton<TConcrete, TConcrete>(configuration);
     }
 }

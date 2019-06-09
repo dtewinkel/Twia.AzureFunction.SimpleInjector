@@ -9,7 +9,7 @@ namespace Twia.AzureFunction.SimpleInjector.UnitTests
     [TestFixture]
     public class ConfigurationExtensionsTests
     {
-        private Dictionary<string, string> _customConfiguration =
+        private readonly Dictionary<string, string> _customConfiguration =
             new Dictionary<string, string>
             {
                 {"mySection:MyValue", "value1"},
