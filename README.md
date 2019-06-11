@@ -18,11 +18,11 @@ In short:
 
 * Create a class derived from `IStartup` and implement `void Build(Container container)`. 
 * Register this class in the `WebJobsStartupAttribute` using `SimpleInjectorStartup<T>`, where `T` is this previously created class.
-* If access to `IWebJobsBuilder builder` is required, then extend the class with implementation of the `IConfigureFunction` extension.
+* If access to `IWebJobsBuilder builder` is required, then extend the class with implementation of the `IConfigureFunction` interface.
 
 ### Using the default configuration
 
-The following example code shows how to create configure the dependicyinjection, using the default configuration for logging:
+The following example code shows how to configure the dependency injection, using the default configuration for logging:
 
 ```csharp
 using System.IO;
@@ -98,7 +98,7 @@ to use the custom configuration.
 
 ### Access to the IWebJobsBuilder builder
 
-To get access to the `IWebJobsBuilder builder`, to configure the function before SimpleInjector is congfigured, the following steps can be taken:
+To get access to the `IWebJobsBuilder builder`, to configure the function before SimpleInjector is configured, the following steps can be taken:
 
 Extend the startup class with `IConfigureFunction`:
 ```csharp

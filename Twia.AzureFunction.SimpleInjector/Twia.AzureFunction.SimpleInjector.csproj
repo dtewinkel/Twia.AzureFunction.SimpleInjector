@@ -12,9 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>azure function simple injector inject di ioc</PackageTags>
     <PackageReleaseNotes>Version 2.1.0:
-- Added access to IWebJobsBuilder builder before creating SimpleInjector configuration to by extending Startup class with IConfigureFunction implementation.
+- Added access to IWebJobsBuilder builder before creating SimpleInjector configuration by extending Startup class with IConfigureFunction implementation.
 - Added extension methods for cross-wiring from ServiceProvider to Container.
-- Added settings injection getting values using IConfiguration Bind.
+- Added settings injection for getting configuration settings values using IConfiguration Bind.
 
 Version 2.0.2:
 - Updated SimpleInjector to 4.6.0.
