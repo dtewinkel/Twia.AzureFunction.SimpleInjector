@@ -18,6 +18,7 @@ In short:
 
 * Create a class derived from `IStartup` and implement `void Build(Container container)`. 
 * Register this class in the `WebJobsStartupAttribute` using `SimpleInjectorStartup<T>`, where `T` is this previously created class.
+* If access to `IWebJobsBuilder builder` is required, then extend the class with implementation of the `IConfigureFunction` extension.
 
 ### Using the default configuration
 
@@ -31,7 +32,7 @@ using SimpleInjector;
 using Twia.AzureFunction.SimpleInjector;
 
 // Register the Startup class as the entry point for the extension.
-[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup>))]
+[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, >))]
 
 /// <summary>
 /// This class takes care of registering the SimpleInjector bindings required by this Function App.
@@ -68,6 +69,7 @@ internal class Startup : IStartup
 A configuration class can be provided that defines which support for logging must be added. By default support for `ILogger` is addded, but through this configuration also support for `ILogger<T>` can be added. 
 
 The configuration class can be implemented according to the following example:
+
 ```csharp
 using Twia.AzureFunction.SimpleInjector;
 
@@ -79,9 +81,35 @@ public class StartupConfiguration : IStartConfiguration
 }
 ```
 
-Then change the line `[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup>))]` to `[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, StartupConfiguration>))]` to use the configuration.
+Then change the line 
+
+```csharp
+[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup>))]
+```
+
+to 
+
+```csharp
+[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, StartupConfiguration>))]
+``` 
+
+to use the custom configuration.
 
 
-## Known issues
+### Access to the IWebJobsBuilder builder
 
-There is a know issue in Azure Function V2 resulting in not always generating a correct `extensions.json`. See [Issue 972](https://github.com/Azure/Azure-Functions/issues/972) in the [Azure Functions GitHub repository](https://github.com/Azure/Azure-Functions) for a detailed description and suggested workarounds. This seems to be fixed in Microsoft.NET.Sdk.Functions to 1.0.28.
+To get access to the `IWebJobsBuilder builder`, to configure the function before SimpleInjector is congfigured, the following steps can be taken:
+
+Extend the startup class with `IConfigureFunction`:
+```csharp
+internal class Startup : IStartup, IConfigureFunction
+```
+
+And implement the interface in the `Startup` class. For example:
+
+```csharp
+    public void ConfigureFunction(IWebJobsBuilder builder)
+    {
+        builder.Services.AddHttpClient();
+    }
+``` 

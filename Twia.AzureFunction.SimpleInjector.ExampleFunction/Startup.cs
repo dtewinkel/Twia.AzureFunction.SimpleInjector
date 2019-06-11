@@ -1,17 +1,20 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.WebJobs.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using SimpleInjector;
 using Twia.AzureFunction.SimpleInjector;
 
 // Register the Startup class as the entry point for the extension.
-[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, StartupConfiguration>))]
+[assembly: WebJobsStartup(typeof(SimpleInjectorStartup<Startup, FullLoggingStartConfiguration>))]
 
 /// <summary>
 /// This class takes care of registering the SimpleInjector bindings required by this Function App.
 /// </summary>
-internal class Startup : IStartup
+internal class Startup : IStartup, IConfigureFunction
 {
     /// <summary>
     /// Build the Simple Injector Container.
@@ -20,13 +23,16 @@ internal class Startup : IStartup
     /// <param name="serviceProvider">The service provider as created by the Azure Function framework.</param>
     public void Build(Container container, IServiceProvider serviceProvider)
     {
-        container.RegisterInstance(BuildConfiguration());
+        var configuration = BuildConfiguration();
+        container.RegisterInstance(configuration);
 
+        container.CrossWireSingleton<IHttpClientFactory>(serviceProvider);
+        container.RegisterSettingsSingleton<IExampleServiceSettings, ExampleServiceSettings>(configuration);
         container.RegisterSingleton<IExampleService, ExampleService>();
     }
 
     /// <summary>
-    ///  Add support for the use of configuration in services.
+    /// Add support for the use of configuration in services.
     /// </summary>
     /// <returns>An instance of <see cref="IConfiguration"/>.</returns>
     private static IConfiguration BuildConfiguration()
@@ -36,5 +42,10 @@ internal class Startup : IStartup
                .AddJsonFile("local.settings.json", optional: true, reloadOnChange: false)
                .AddEnvironmentVariables()
                .Build();
+    }
+
+    public void ConfigureFunction(IWebJobsBuilder builder)
+    {
+        builder.Services.AddHttpClient();
     }
 }

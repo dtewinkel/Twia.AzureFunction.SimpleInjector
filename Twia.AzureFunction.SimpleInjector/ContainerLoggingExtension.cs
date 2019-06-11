@@ -4,7 +4,6 @@ using Microsoft.Azure.WebJobs.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SimpleInjector;
-using Twia.AzureFunction.SimpleInjector.Config;
 
 namespace Twia.AzureFunction.SimpleInjector
 {
