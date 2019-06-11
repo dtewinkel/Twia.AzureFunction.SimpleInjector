@@ -1,20 +1,17 @@
-﻿using Microsoft.Azure.WebJobs;
+﻿using System;
+using SimpleInjector;
 
 namespace Twia.AzureFunction.SimpleInjector
 {
     /// <summary>
-    /// Interface that can be implemented on top of an instance that implements IStartup.
+    /// Defines the interface of builder that creates an instance of an <see cref="IServiceProvider"/>.
     /// </summary>
-    /// <remarks>
-    /// The presence of this interface ofn a class will be detected by SimpleInjectorStartup and this method will be
-    /// called to configure the function before SimpleInjector is configured.
-    /// </remarks>
-    public interface IConfigure
+    public interface IStartup
     {
         /// <summary>
-        /// Extend the 
+        /// Creates an instance of an <see cref="IServiceProvider"/>.
         /// </summary>
-        /// <param name="builder">The builder for this Azure Function.</param>
-        void Configure(IWebJobsBuilder builder);
+        /// <returns></returns>
+        void Build(Container container, IServiceProvider serviceProvider);
     }
 }

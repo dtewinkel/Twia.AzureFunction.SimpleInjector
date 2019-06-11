@@ -11,7 +11,12 @@
     <PackageIconUrl>https://twiaresources.blob.core.windows.net/nuget/twia-64.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>azure function simple injector inject di ioc</PackageTags>
-    <PackageReleaseNotes>Version 2.0.2:
+    <PackageReleaseNotes>Version 2.1.0:
+- Added access to IWebJobsBuilder builder before creating SimpleInjector configuration to by extending Startup class with IConfigureFunction implementation.
+- Added extension methods for cross-wiring from ServiceProvider to Container.
+- Added settings injection getting values using IConfiguration Bind.
+
+Version 2.0.2:
 - Updated SimpleInjector to 4.6.0.
 - Updated Microsoft.NET.Sdk.Functions to 1.0.28. This seems to fix issues with generation of extensions.json on build.
 

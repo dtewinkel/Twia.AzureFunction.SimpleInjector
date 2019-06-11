@@ -26,7 +26,7 @@ namespace Twia.AzureFunction.SimpleInjector
 
             _startup = new TStartup();
 
-            (_startup as IConfigure)?.Configure(builder);
+            (_startup as IConfigureFunction)?.ConfigureFunction(builder);
 
             builder.Services.AddSingleton(_startup);
             builder.Services.AddSingleton<IServiceProviderHolder>(provider => new ServiceProviderHolder(GetSimpleInjectContainer(provider, _startup)));

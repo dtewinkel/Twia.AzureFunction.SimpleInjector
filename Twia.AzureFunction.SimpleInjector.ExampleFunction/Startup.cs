@@ -14,7 +14,7 @@ using Twia.AzureFunction.SimpleInjector;
 /// <summary>
 /// This class takes care of registering the SimpleInjector bindings required by this Function App.
 /// </summary>
-internal class Startup : IStartup, IConfigure
+internal class Startup : IStartup, IConfigureFunction
 {
     /// <summary>
     /// Build the Simple Injector Container.
@@ -44,7 +44,7 @@ internal class Startup : IStartup, IConfigure
                .Build();
     }
 
-    public void Configure(IWebJobsBuilder builder)
+    public void ConfigureFunction(IWebJobsBuilder builder)
     {
         builder.Services.AddHttpClient();
     }
